@@ -16,28 +16,33 @@
 <body>
 <style>
 
-    .personDiv{ margin:0px auto; margin-top: 10px;  padding:20px; width: 50%; border: 1px solid #000; }
+    .personDiv {
+        margin: 0px auto;
+        margin-top: 10px;
+        padding: 20px;
+        width: 50%;
+        border: 1px solid #000;
+    }
 
 </style>
 
 <script>
-    $( document ).ready(function() {
+    $(document).ready(function () {
 
         $("#btnFormPost").click(function () {
 
-            alert("clicked");
             $.ajax({
                 type: "post",
                 dataType: "json",
                 url: "http://localhost:8080/person/add.htm",
-                data:'firstname=' + $("#firstname").val() + "&lastname=" + $("#lastname").val() + "&email=" + $("#email").val(),
-                success: function(response){
+                data: 'firstname=' + $("#firstname").val() + "&lastname=" + $("#lastname").val() + "&email=" + $("#email").val(),
+                success: function (response) {
 
                     $("#resFirstName").text(response["firstname"]);
                     $("#resLastName").text(response["lastname"]);
                     $("#resEmail").text(response["email"]);
                 },
-                error: function(){
+                error: function () {
                     alert('Post İşlemi Esnasında Bir Hata Oluştu');
                 }//error finish
             });//ajax finish
@@ -47,22 +52,22 @@
 </script>
 
 <div class="personDiv">
-<form role="form" name="personForm" method="POST" onsubmit="return false;">
-    <div class="form-group">
-        <label for="firstname">Ad</label>
-        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Ad">
-    </div>
+    <form role="form" name="personForm" method="POST" onsubmit="return false;">
+        <div class="form-group">
+            <label for="firstname">Ad</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Ad">
+        </div>
 
-    <div class="form-group">
-        <label for="lastname">Soyad</label>
-        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Soyad">
-    </div>
-    <div class="form-group">
-        <label for="email">E-Posta</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="E-Posta">
-    </div>
-    <button type="submit"  id="btnFormPost" class="btn btn-primary">Gonder</button>
-</form>
+        <div class="form-group">
+            <label for="lastname">Soyad</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Soyad">
+        </div>
+        <div class="form-group">
+            <label for="email">E-Posta</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="E-Posta">
+        </div>
+        <button type="submit" id="btnFormPost" class="btn btn-primary">Gonder</button>
+    </form>
 </div>
 
 <div class="personDiv" id="result">

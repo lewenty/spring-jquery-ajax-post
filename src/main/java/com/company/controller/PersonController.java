@@ -27,13 +27,9 @@ public class PersonController {
 
         Person person = new Person();
 
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        String email = request.getParameter("email");
-
-        person.setEmail(email);
-        person.setFirstname(firstName);
-        person.setLastname(lastName);
+        person.setEmail(request.getParameter("email"));
+        person.setFirstname(request.getParameter("firstname"));
+        person.setLastname(request.getParameter("lastname"));
 
         return person;
     }
